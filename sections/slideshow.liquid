@@ -2,7 +2,8 @@
   <script src="{{ 'slideshow.js' | asset_url }}" defer></script>
 {%- endif -%}
 
-<div id="section-id-{{ section.id }}" {%- render 'animation-attrs', attrs: 'data-cc-animate data-cc-animate-delay="0.2s"' -%}>
+{%- assign brand_vis = section.settings.brand_visibility | default: 'all' -%}
+<div id="section-id-{{ section.id }}" data-brand-section="{{ brand_vis }}" {%- render 'animation-attrs', attrs: 'data-cc-animate data-cc-animate-delay="0.2s"' -%}>
     {% style %}
       {%- if section.settings.autoplay -%}
         #section-id-{{ section.id }} slide-show {
@@ -230,6 +231,17 @@
   },
   "max_blocks": 8,
   "settings": [
+    {
+      "type": "select",
+      "id": "brand_visibility",
+      "label": "ブランド表示",
+      "options": [
+        { "value": "all",      "label": "両方" },
+        { "value": "amateras", "label": "AMATERASのみ" },
+        { "value": "wabi",     "label": "WABIのみ" }
+      ],
+      "default": "all"
+    },
     {
       "type": "radio",
       "id": "height",

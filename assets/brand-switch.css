@@ -89,3 +89,15 @@
 
 /* --- 商品カード非表示 --- */
 .resource-list__item[data-brand-hidden="true"] { display: none; }
+
+/* --- セクション単位のブランド表示切替 --- */
+[data-brand-section="amateras"],
+[data-brand-section="wabi"] {
+  display: none;
+}
+[data-brand="amateras"] [data-brand-section="amateras"],
+[data-brand="amateras"] [data-brand-section="all"],
+[data-brand="wabi"]     [data-brand-section="wabi"],
+[data-brand="wabi"]     [data-brand-section="all"] {
+  display: block;
+}
