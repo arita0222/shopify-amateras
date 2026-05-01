@@ -1,0 +1,194 @@
+{%- liquid
+  assign amateras_img   = section.settings.amateras_image
+  assign wabi_img       = section.settings.wabi_image
+-%}
+
+<div class="brand-hero">
+
+  {%- comment -%}AMATERAS ヒーロー{%- endcomment -%}
+  <div class="brand-hero__panel brand-hero--amateras" data-brand-panel="amateras"
+    style="{% if amateras_img != blank %}background-image: url('{{ amateras_img | image_url: width: 2000 }}');{% endif %}
+           background-color: {{ section.settings.amateras_bg_color }};
+           color: {{ section.settings.amateras_text_color }};">
+    <div class="brand-hero__content">
+      {%- if section.settings.amateras_heading != blank -%}
+        <h2 class="brand-hero__heading">{{ section.settings.amateras_heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.amateras_subtext != blank -%}
+        <p class="brand-hero__subtext">{{ section.settings.amateras_subtext }}</p>
+      {%- endif -%}
+      {%- if section.settings.amateras_btn_label != blank -%}
+        <a href="{{ section.settings.amateras_btn_url }}" class="btn btn--primary brand-hero__btn">
+          {{ section.settings.amateras_btn_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- comment -%}WABI ヒーロー{%- endcomment -%}
+  <div class="brand-hero__panel brand-hero--wabi" data-brand-panel="wabi"
+    style="{% if wabi_img != blank %}background-image: url('{{ wabi_img | image_url: width: 2000 }}');{% endif %}
+           background-color: {{ section.settings.wabi_bg_color }};
+           color: {{ section.settings.wabi_text_color }};">
+    <div class="brand-hero__content">
+      {%- if section.settings.wabi_heading != blank -%}
+        <h2 class="brand-hero__heading">{{ section.settings.wabi_heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.wabi_subtext != blank -%}
+        <p class="brand-hero__subtext">{{ section.settings.wabi_subtext }}</p>
+      {%- endif -%}
+      {%- if section.settings.wabi_btn_label != blank -%}
+        <a href="{{ section.settings.wabi_btn_url }}" class="btn btn--primary brand-hero__btn">
+          {{ section.settings.wabi_btn_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+</div>
+
+{% style %}
+.brand-hero { position: relative; width: 100%; }
+.brand-hero__panel {
+  display: none;
+  width: 100%;
+  min-height: {{ section.settings.panel_height }}px;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  justify-content: center;
+}
+[data-brand="amateras"] .brand-hero--amateras { display: flex; }
+[data-brand="wabi"]     .brand-hero--wabi     { display: flex; }
+.brand-hero__content {
+  text-align: {{ section.settings.text_align }};
+  padding: 40px 24px;
+  max-width: 640px;
+}
+.brand-hero__heading {
+  font-size: clamp(28px, 5vw, 56px);
+  margin-bottom: 16px;
+  font-family: var(--font-heading-family);
+}
+.brand-hero__subtext {
+  font-size: clamp(14px, 2vw, 18px);
+  margin-bottom: 24px;
+  opacity: 0.85;
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Brand Hero",
+  "settings": [
+    {
+      "type": "range",
+      "id": "panel_height",
+      "min": 300,
+      "max": 900,
+      "step": 50,
+      "unit": "px",
+      "label": "ヒーローの高さ",
+      "default": 600
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "テキスト配置",
+      "options": [
+        { "value": "left",   "label": "左" },
+        { "value": "center", "label": "中央" },
+        { "value": "right",  "label": "右" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "AMATERAS"
+    },
+    {
+      "type": "image_picker",
+      "id": "amateras_image",
+      "label": "背景画像"
+    },
+    {
+      "type": "color",
+      "id": "amateras_bg_color",
+      "label": "背景色（画像なし時）",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
+      "id": "amateras_text_color",
+      "label": "テキスト色",
+      "default": "#111111"
+    },
+    {
+      "type": "text",
+      "id": "amateras_heading",
+      "label": "見出し",
+      "default": "AMATERAS JAPAN"
+    },
+    {
+      "type": "text",
+      "id": "amateras_subtext",
+      "label": "サブテキスト"
+    },
+    {
+      "type": "text",
+      "id": "amateras_btn_label",
+      "label": "ボタンラベル"
+    },
+    {
+      "type": "url",
+      "id": "amateras_btn_url",
+      "label": "ボタンリンク"
+    },
+    {
+      "type": "header",
+      "content": "WABI"
+    },
+    {
+      "type": "image_picker",
+      "id": "wabi_image",
+      "label": "背景画像"
+    },
+    {
+      "type": "color",
+      "id": "wabi_bg_color",
+      "label": "背景色（画像なし時）",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "wabi_text_color",
+      "label": "テキスト色",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "text",
+      "id": "wabi_heading",
+      "label": "見出し",
+      "default": "WABI"
+    },
+    {
+      "type": "text",
+      "id": "wabi_subtext",
+      "label": "サブテキスト"
+    },
+    {
+      "type": "text",
+      "id": "wabi_btn_label",
+      "label": "ボタンラベル"
+    },
+    {
+      "type": "url",
+      "id": "wabi_btn_url",
+      "label": "ボタンリンク"
+    }
+  ],
+  "presets": [
+    { "name": "Brand Hero" }
+  ]
+}
+{% endschema %}

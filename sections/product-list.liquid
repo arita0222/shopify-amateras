@@ -60,13 +60,31 @@
               endfor
             endif
             for product in section.settings.product_list
-              if section.settings.enable_carousel
-                echo '<div class="slider__item">'
+              assign brand_tag = ''
+              if product.tags contains 'wabi'
+                assign brand_tag = 'wabi'
+              elsif product.tags contains 'amateras'
+                assign brand_tag = 'amateras'
               endif
-              render 'product-block', product: product, custom_aspect_ratio: chosen_aspect_ratio, no_swiping: section.settings.enable_carousel, no_quick_buy_markup: section.settings.enable_carousel
-              if section.settings.enable_carousel
-                echo '</div>'
+              assign brand_vis = section.settings.brand_visibility
+              if brand_vis == 'amateras' and brand_tag == 'wabi'
+                continue
               endif
+              if brand_vis == 'wabi' and brand_tag == 'amateras'
+                continue
+              endif
+              capture item_html
+                if section.settings.enable_carousel
+                  echo '<div class="slider__item">'
+                endif
+                render 'product-block', product: product, custom_aspect_ratio: chosen_aspect_ratio, no_swiping: section.settings.enable_carousel, no_quick_buy_markup: section.settings.enable_carousel
+                if section.settings.enable_carousel
+                  echo '</div>'
+                endif
+              endcapture
+              echo '<div class="resource-list__item" data-brand-tag="' | append: brand_tag | append: '">'
+              echo item_html
+              echo '</div>'
             endfor
           endif
         -%}
@@ -101,6 +119,17 @@
     ]
   },
   "settings": [
+    {
+      "type": "select",
+      "id": "brand_visibility",
+      "label": "ブランド表示",
+      "options": [
+        { "value": "all",      "label": "両方" },
+        { "value": "amateras", "label": "AMATERASのみ" },
+        { "value": "wabi",     "label": "WABIのみ" }
+      ],
+      "default": "all"
+    },
     {
       "type": "text",
       "id": "title",
