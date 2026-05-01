@@ -10,6 +10,17 @@
   gap: 0;
   z-index: 2;
   position: relative;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* バー背景色: ブランドごと */
+[data-brand="amateras"] .brand-switch-bar {
+  background-color: var(--brand-amateras-header-bg, #ffffff);
+  color: var(--brand-amateras-header-text, #111111);
+}
+[data-brand="wabi"] .brand-switch-bar {
+  background-color: var(--brand-wabi-header-bg, #1a1a1a);
+  color: var(--brand-wabi-header-text, #f5f5f5);
 }
 
 .brand-switch-bar__btn {
@@ -20,6 +31,7 @@
   cursor: pointer;
   border: 1px solid currentColor;
   background: transparent;
+  color: inherit;
   transition: background 0.2s, color 0.2s;
   line-height: 1;
 }
@@ -28,10 +40,15 @@
 .brand-switch-bar__btn--wabi     { border-left: none; }
 
 /* アクティブ状態 */
-[data-brand="amateras"] .brand-switch-bar__btn--amateras,
-[data-brand="wabi"]     .brand-switch-bar__btn--wabi {
-  background: var(--brand-switch-accent, currentColor);
-  color: var(--brand-switch-bg, #fff);
+[data-brand="amateras"] .brand-switch-bar__btn--amateras {
+  background: var(--brand-amateras-header-text, #111111);
+  color: var(--brand-amateras-header-bg, #ffffff);
+  border-color: var(--brand-amateras-header-text, #111111);
+}
+[data-brand="wabi"] .brand-switch-bar__btn--wabi {
+  background: var(--brand-wabi-header-text, #f5f5f5);
+  color: var(--brand-wabi-header-bg, #1a1a1a);
+  border-color: var(--brand-wabi-header-text, #f5f5f5);
 }
 
 /* --- ヘッダー色 --- */
