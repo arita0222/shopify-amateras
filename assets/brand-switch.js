@@ -2,7 +2,7 @@
   'use strict';
 
   var STORAGE_KEY = 'selectedBrand';
-  var DEFAULT_BRAND = 'amateras';
+  var DEFAULT_BRAND = 'wabi';
 
   function getCurrentBrand() {
     try {
