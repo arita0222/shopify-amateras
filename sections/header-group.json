@@ -17,7 +17,7 @@
         "e33df8e3-c667-49c7-9da7-a23fac96c44d": {
           "type": "announcement",
           "settings": {
-            "text": "<a href=\"#\" title=\"FAQs\">Free shipping<\/a> on orders over $50",
+            "text": "<a href=\"#\" title=\"FAQs\">Free shipping</a> on orders over $50",
             "show_countdown": true,
             "hide_on_end": false,
             "end_date": "",
@@ -33,7 +33,7 @@
         "ab92b476-2d4e-4c0c-991e-4f528236c2d9": {
           "type": "announcement",
           "settings": {
-            "text": "New eco friendly arrivals. <a href=\"#\" title=\"New In\">Shop the capsule.<\/a>",
+            "text": "New eco friendly arrivals. <a href=\"#\" title=\"New In\">Shop the capsule.</a>",
             "show_countdown": false,
             "hide_on_end": false,
             "end_date": "",
@@ -49,7 +49,7 @@
         "779702cf-d8cf-4f96-b433-b424480b158b": {
           "type": "announcement",
           "settings": {
-            "text": "Swim Capsule. Be the first to <a href=\"#\" title=\"New In\">shop the drop<\/a>.",
+            "text": "Swim Capsule. Be the first to <a href=\"#\" title=\"New In\">shop the drop</a>.",
             "show_countdown": false,
             "hide_on_end": false,
             "end_date": "",
@@ -128,10 +128,28 @@
         "head_not_mob_text": "Free shipping on orders over $50",
         "head_not_mob_url": ""
       }
+    },
+    "brand-switch": {
+      "type": "brand-switch",
+      "settings": {
+        "amateras_label": "AMATERAS",
+        "wabi_label": "WABI",
+        "amateras_header_bg": "#ffffff",
+        "amateras_header_text": "#111111",
+        "amateras_header_accent": "#111111",
+        "wabi_header_bg": "#1a1a1a",
+        "wabi_header_text": "#f5f5f5",
+        "wabi_header_accent": "#f5f5f5",
+        "amateras_footer_bg": "#ffffff",
+        "amateras_footer_text": "#111111",
+        "wabi_footer_bg": "#1a1a1a",
+        "wabi_footer_text": "#f5f5f5"
+      }
     }
   },
   "order": [
     "announcement-bar",
+    "brand-switch",
     "header",
     "store-messages"
   ]
