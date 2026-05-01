@@ -15,7 +15,8 @@
 <link rel="stylesheet" href="{{ 'video.css' | asset_url }}" {%- render 'lazy-stylesheet-attrs' %}>
 <script src="{{ 'video.js' | asset_url }}" defer></script>
 
-<div id="section-id-{{ section.id }}" class="{% unless section.settings.full_width %}container fully-spaced-row{% endunless %} video-section video-section--background" {%- render 'animation-attrs', attrs: 'data-cc-animate' -%}>
+{%- assign brand_vis = section.settings.brand_visibility | default: 'all' -%}
+<div id="section-id-{{ section.id }}" data-brand-section="{{ brand_vis }}" class="{% unless section.settings.full_width %}container fully-spaced-row{% endunless %} video-section video-section--background" {%- render 'animation-attrs', attrs: 'data-cc-animate' -%}>
   {% style %}
     #section-id-{{ section.id }} .height--fixed {
       --image-height: {{ section.settings.height_mobile }}px;
@@ -165,6 +166,17 @@
     ]
   },
   "settings": [
+    {
+      "type": "select",
+      "id": "brand_visibility",
+      "label": "ブランド表示",
+      "options": [
+        { "value": "all",      "label": "両方" },
+        { "value": "amateras", "label": "AMATERASのみ" },
+        { "value": "wabi",     "label": "WABIのみ" }
+      ],
+      "default": "all"
+    },
     {
       "type": "paragraph",
       "content": "Background videos play on loop, with no sound. If you need a video with sound use the Video section."
