@@ -61,9 +61,9 @@
 }
 
 /* --- ロゴ切替 --- */
-.brand-logo { display: none; }
-[data-brand="amateras"] .brand-logo--amateras { display: block; }
-[data-brand="wabi"]     .brand-logo--wabi     { display: block; }
+.brand-logo { display: none !important; }
+[data-brand="amateras"] .brand-logo--amateras { display: inline-flex !important; align-items: center; }
+[data-brand="wabi"]     .brand-logo--wabi     { display: inline-flex !important; align-items: center; }
 
 /* --- メニュー切替 --- */
 .brand-nav { display: none; }
