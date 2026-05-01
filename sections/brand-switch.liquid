@@ -1,0 +1,152 @@
+{%- liquid
+  assign amateras_label = section.settings.amateras_label | default: 'AMATERAS'
+  assign wabi_label     = section.settings.wabi_label     | default: 'WABI'
+  assign redirect_url   = section.settings.redirect_url   | default: '/'
+-%}
+
+{%- style -%}
+  :root {
+    --brand-amateras-header-bg:   {{ section.settings.amateras_header_bg }};
+    --brand-amateras-header-text: {{ section.settings.amateras_header_text }};
+    --brand-amateras-header-accent: {{ section.settings.amateras_header_accent }};
+    --brand-wabi-header-bg:       {{ section.settings.wabi_header_bg }};
+    --brand-wabi-header-text:     {{ section.settings.wabi_header_text }};
+    --brand-wabi-header-accent:   {{ section.settings.wabi_header_accent }};
+    --brand-amateras-footer-bg:   {{ section.settings.amateras_footer_bg }};
+    --brand-amateras-footer-text: {{ section.settings.amateras_footer_text }};
+    --brand-wabi-footer-bg:       {{ section.settings.wabi_footer_bg }};
+    --brand-wabi-footer-text:     {{ section.settings.wabi_footer_text }};
+  }
+{%- endstyle -%}
+
+<div class="brand-switch-bar" id="brand-switch-bar">
+  <button
+    class="brand-switch-bar__btn brand-switch-bar__btn--amateras"
+    data-brand-btn="amateras"
+    data-brand-redirect="{{ redirect_url }}"
+    aria-pressed="true"
+    type="button">
+    {{ amateras_label }}
+  </button>
+  <button
+    class="brand-switch-bar__btn brand-switch-bar__btn--wabi"
+    data-brand-btn="wabi"
+    data-brand-redirect="{{ redirect_url }}"
+    aria-pressed="false"
+    type="button">
+    {{ wabi_label }}
+  </button>
+</div>
+
+<script src="{{ 'brand-switch.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Brand Switch",
+  "settings": [
+    {
+      "type": "header",
+      "content": "ブランド名"
+    },
+    {
+      "type": "text",
+      "id": "amateras_label",
+      "label": "AMATERASラベル",
+      "default": "AMATERAS"
+    },
+    {
+      "type": "text",
+      "id": "wabi_label",
+      "label": "WABIラベル",
+      "default": "WABI"
+    },
+    {
+      "type": "url",
+      "id": "redirect_url",
+      "label": "TOP以外からのリダイレクト先",
+      "info": "未設定時はトップページ(/)へ"
+    },
+    {
+      "type": "header",
+      "content": "AMATERASヘッダー色"
+    },
+    {
+      "type": "color",
+      "id": "amateras_header_bg",
+      "label": "背景色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "amateras_header_text",
+      "label": "テキスト色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "amateras_header_accent",
+      "label": "アクセント色",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
+      "content": "WABIヘッダー色"
+    },
+    {
+      "type": "color",
+      "id": "wabi_header_bg",
+      "label": "背景色",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "wabi_header_text",
+      "label": "テキスト色",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "wabi_header_accent",
+      "label": "アクセント色",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "header",
+      "content": "AMATERASフッター色"
+    },
+    {
+      "type": "color",
+      "id": "amateras_footer_bg",
+      "label": "背景色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "amateras_footer_text",
+      "label": "テキスト色",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
+      "content": "WABIフッター色"
+    },
+    {
+      "type": "color",
+      "id": "wabi_footer_bg",
+      "label": "背景色",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "wabi_footer_text",
+      "label": "テキスト色",
+      "default": "#f5f5f5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Switch"
+    }
+  ]
+}
+{% endschema %}

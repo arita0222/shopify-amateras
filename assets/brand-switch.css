@@ -1,0 +1,74 @@
+/* =============================================
+   Brand Switch — AMATERAS / WABI
+   ============================================= */
+
+/* --- Switch Bar --- */
+.brand-switch-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  z-index: 2;
+  position: relative;
+}
+
+.brand-switch-bar__btn {
+  padding: 8px 24px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid currentColor;
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+.brand-switch-bar__btn--amateras { border-right: none; }
+.brand-switch-bar__btn--wabi     { border-left: none; }
+
+/* アクティブ状態 */
+[data-brand="amateras"] .brand-switch-bar__btn--amateras,
+[data-brand="wabi"]     .brand-switch-bar__btn--wabi {
+  background: var(--brand-switch-accent, currentColor);
+  color: var(--brand-switch-bg, #fff);
+}
+
+/* --- ヘッダー色 --- */
+[data-brand="amateras"] .section-header {
+  background-color: var(--brand-amateras-header-bg, #fff);
+  color: var(--brand-amateras-header-text, #111);
+  --color-header-link: var(--brand-amateras-header-text, #111);
+  --color-link: var(--brand-amateras-header-text, #111);
+}
+
+[data-brand="wabi"] .section-header {
+  background-color: var(--brand-wabi-header-bg, #1a1a1a);
+  color: var(--brand-wabi-header-text, #f5f5f5);
+  --color-header-link: var(--brand-wabi-header-text, #f5f5f5);
+  --color-link: var(--brand-wabi-header-text, #f5f5f5);
+}
+
+/* --- フッター色 --- */
+[data-brand="amateras"] #pagefooter {
+  background-color: var(--brand-amateras-footer-bg, #fff);
+  color: var(--brand-amateras-footer-text, #111);
+}
+
+[data-brand="wabi"] #pagefooter {
+  background-color: var(--brand-wabi-footer-bg, #1a1a1a);
+  color: var(--brand-wabi-footer-text, #f5f5f5);
+}
+
+/* --- ロゴ切替 --- */
+.brand-logo { display: none; }
+[data-brand="amateras"] .brand-logo--amateras { display: block; }
+[data-brand="wabi"]     .brand-logo--wabi     { display: block; }
+
+/* --- メニュー切替 --- */
+.brand-nav { display: none; }
+[data-brand="amateras"] .brand-nav--amateras { display: flex; }
+[data-brand="wabi"]     .brand-nav--wabi     { display: flex; }
+
+/* --- 商品カード非表示 --- */
+.resource-list__item[data-brand-hidden="true"] { display: none; }
