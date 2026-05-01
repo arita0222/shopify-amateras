@@ -36,8 +36,8 @@
   line-height: 1;
 }
 
-.brand-switch-bar__btn--amateras { border-right: none; }
-.brand-switch-bar__btn--wabi     { border-left: none; }
+.brand-switch-bar__btn--wabi     { border-right: none; }
+.brand-switch-bar__btn--amateras { border-left: none; }
 
 /* アクティブ状態 */
 [data-brand="amateras"] .brand-switch-bar__btn--amateras {
