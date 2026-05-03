@@ -125,9 +125,12 @@
             </a>
           {% endif %}
           {% if section.settings.menu_layout contains 'inline' %}
-            <div id="proxy-nav" class="navigation navigation--left" role="navigation" aria-label="{{ 'accessibility.main_navigation' | t }}">
+            {%- assign wabi_menu_link = section.settings.wabi_menu_linklist | default: section.settings.menu_linklist -%}
+            <div id="proxy-nav" class="navigation navigation--left navigation--tight-underline" role="navigation" aria-label="{{ 'accessibility.main_navigation' | t }}">
               <div class="navigation__tier-1-container">
-                <ul class="navigation__tier-1">
+
+                {%- comment -%}AMATERAS リスト{%- endcomment -%}
+                <ul class="navigation__tier-1 brand-ul brand-ul--amateras" data-brand-ul="amateras">
                   {% for link in linklists[section.settings.menu_linklist].links %}
                     {%- liquid
                       assign has_dropdown = false
@@ -149,12 +152,43 @@
                       endif
                     -%}
                     <li class="navigation__item{% if has_dropdown %} navigation__item--with-children {% if use_columns %}navigation__item--with-mega-menu{% else %}navigation__item--with-small-menu{% endif %}{% endif %}{% if featured_links contains link.title %} featured-link{% endif %}{% if link.active %} navigation__item--active{% endif %}">
-                      <a href="{{ link.url }}" class="navigation__link" {% if has_dropdown %}aria-haspopup="true" aria-expanded="false" aria-controls="NavigationTier2-{{ forloop.index }}"{% endif %}>
+                      <a href="{{ link.url }}" class="navigation__link" {% if has_dropdown %}aria-haspopup="true" aria-expanded="false" aria-controls="NavigationTier2A-{{ forloop.index }}"{% endif %}>
                         {{- link.title | escape -}}
                       </a>
                     </li>
                   {% endfor %}
                 </ul>
+
+                {%- comment -%}WABI リスト{%- endcomment -%}
+                <ul class="navigation__tier-1 brand-ul brand-ul--wabi" data-brand-ul="wabi">
+                  {% for link in linklists[wabi_menu_link].links %}
+                    {%- liquid
+                      assign has_dropdown = false
+                      if link.links != blank
+                        assign has_dropdown = true
+                      endif
+                      assign use_columns = false
+                      if link.levels >= 2
+                        assign use_columns = true
+                      else
+                        assign link_title_sanitised = link.title | downcase | strip
+                        for block in section.blocks
+                          assign dropdown_link_title_sanitised = block.settings.dropdown_link_title | downcase | strip
+                          if dropdown_link_title_sanitised == link_title_sanitised
+                            assign use_columns = true
+                            assign has_dropdown = true
+                          endif
+                        endfor
+                      endif
+                    -%}
+                    <li class="navigation__item{% if has_dropdown %} navigation__item--with-children {% if use_columns %}navigation__item--with-mega-menu{% else %}navigation__item--with-small-menu{% endif %}{% endif %}{% if featured_links contains link.title %} featured-link{% endif %}{% if link.active %} navigation__item--active{% endif %}">
+                      <a href="{{ link.url }}" class="navigation__link" {% if has_dropdown %}aria-haspopup="true" aria-expanded="false" aria-controls="NavigationTier2W-{{ forloop.index }}"{% endif %}>
+                        {{- link.title | escape -}}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+
               </div>
             </div>
           {% endif %}

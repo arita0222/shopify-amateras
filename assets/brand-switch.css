@@ -133,3 +133,13 @@
 [data-brand="wabi"]     [data-brand-section="all"] {
   display: block;
 }
+
+/* --- proxy-nav 内の brand-ul 切替 --- */
+#proxy-nav .brand-ul { display: none; }
+[data-brand="amateras"] #proxy-nav .brand-ul--amateras { display: flex; }
+[data-brand="wabi"]     #proxy-nav .brand-ul--wabi     { display: flex; }
+
+/* 両方のulを重ねるためabsolute配置にしてSymmetryの幅計算を維持 */
+#proxy-nav .navigation__tier-1-container {
+  position: relative;
+}
