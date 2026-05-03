@@ -157,3 +157,13 @@
 .section-header {
   margin-bottom: 0 !important;
 }
+
+/* --- body/html背景色をブランド連動（iOSバウンス対策） --- */
+[data-brand="amateras"] body,
+[data-brand="amateras"] {
+  background-color: var(--brand-amateras-header-bg, #f5deb3);
+}
+[data-brand="wabi"] body,
+[data-brand="wabi"] {
+  background-color: var(--brand-wabi-header-bg, #2e8b57);
+}
