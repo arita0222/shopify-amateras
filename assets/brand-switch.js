@@ -69,3 +69,21 @@
     filterProducts(brand);
   });
 })();
+
+
+// brand-switch-barをpageheader内の先頭に移動（Symmetryのsticky機構に乗せる）
+function moveSwitchBarToHeader() {
+  var bar = document.getElementById('brand-switch-bar');
+  if (!bar) return;
+  var pageheader = document.getElementById('pageheader');
+  if (!pageheader) return;
+  if (bar.parentElement === pageheader) return;
+  pageheader.insertBefore(bar, pageheader.firstChild);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', moveSwitchBarToHeader);
+} else {
+  moveSwitchBarToHeader();
+}
+window.addEventListener('load', moveSwitchBarToHeader);

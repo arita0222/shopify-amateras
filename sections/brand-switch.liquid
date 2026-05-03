@@ -39,6 +39,18 @@
 </div>
 
 <script src="{{ 'brand-switch.js' | asset_url }}" defer></script>
+<script>
+  // pageheaderへの即時移動（headerが先に読まれた直後に実行）
+  (function tryMove() {
+    var bar = document.getElementById('brand-switch-bar');
+    var ph = document.getElementById('pageheader');
+    if (bar && ph && bar.parentElement !== ph) {
+      ph.insertBefore(bar, ph.firstChild);
+    } else if (!ph) {
+      requestAnimationFrame(tryMove);
+    }
+  })();
+</script>
 
 {% schema %}
 {
