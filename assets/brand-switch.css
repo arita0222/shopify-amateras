@@ -147,3 +147,8 @@
 #proxy-nav .navigation__tier-1-container {
   position: relative;
 }
+
+/* --- モバイルメニュー（mobile-navigation-drawer内）のブランド切替 --- */
+.mobile-navigation-drawer .brand-nav { display: none; }
+[data-brand="amateras"] .mobile-navigation-drawer .brand-nav--amateras { display: block; }
+[data-brand="wabi"]     .mobile-navigation-drawer .brand-nav--wabi     { display: block; }

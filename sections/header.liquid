@@ -445,17 +445,28 @@
       </div>
     </div>
 
-    {%- assign mobile_linklist = section.settings.menu_linklist_mobile | default: section.settings.menu_linklist -%}
+    {%- assign mobile_linklist_amateras = section.settings.menu_linklist_mobile | default: section.settings.menu_linklist -%}
+    {%- assign mobile_linklist_wabi = section.settings.wabi_menu_linklist | default: mobile_linklist_amateras -%}
     <script class="mobile-navigation-drawer-template" type="text/template">
       <div class="mobile-navigation-drawer" data-mobile-expand-with-entire-link="{{ section.settings.mobile_expand_with_entire_link }}">
-        <div class="navigation navigation--main" role="navigation" aria-label="{{ 'accessibility.main_navigation' | t }}">
+        <div class="navigation navigation--main brand-nav brand-nav--amateras" role="navigation" aria-label="{{ 'accessibility.main_navigation' | t }}">
           <div class="navigation__tier-1-container">
             <div class="navigation__mobile-header">
               <a href="#" class="mobile-nav-back has-ltr-icon" aria-label="{{ 'general.navigation.back' | t }}">{% render 'icon-chevron-left', stroke_width: 1.3 %}</a>
               <span class="mobile-nav-title"></span>
               <a href="#" class="mobile-nav-toggle"  aria-label="{{ 'general.navigation.close' | t }}">{% render 'icon-close', stroke_width: 1.3 %}</a>
             </div>
-            {% render 'main-nav-links', link_list: mobile_linklist, mobile: true, featured_links: featured_links %}
+            {% render 'main-nav-links', link_list: mobile_linklist_amateras, mobile: true, featured_links: featured_links %}
+          </div>
+        </div>
+        <div class="navigation navigation--main brand-nav brand-nav--wabi" role="navigation" aria-label="{{ 'accessibility.main_navigation' | t }}">
+          <div class="navigation__tier-1-container">
+            <div class="navigation__mobile-header">
+              <a href="#" class="mobile-nav-back has-ltr-icon" aria-label="{{ 'general.navigation.back' | t }}">{% render 'icon-chevron-left', stroke_width: 1.3 %}</a>
+              <span class="mobile-nav-title"></span>
+              <a href="#" class="mobile-nav-toggle"  aria-label="{{ 'general.navigation.close' | t }}">{% render 'icon-close', stroke_width: 1.3 %}</a>
+            </div>
+            {% render 'main-nav-links', link_list: mobile_linklist_wabi, mobile: true, featured_links: featured_links %}
             {% if section.settings.enable_nav_mob_products %}
               <div class="navigation__mobile-products">
                 <div class="navigation__mobile-products-title">{{ section.settings.nav_mob_products_title | escape }}</div>
