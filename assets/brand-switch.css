@@ -99,12 +99,16 @@
 }
 
 /* --- フッター色 --- */
-[data-brand="amateras"] #pagefooter {
+[data-brand="amateras"] #pagefooter,
+[data-brand="amateras"] #pagefooter .section-footer,
+[data-brand="amateras"] #pagefooter .shopify-section-group-footer-group {
   background-color: var(--brand-amateras-footer-bg, #fff);
   color: var(--brand-amateras-footer-text, #111);
 }
 
-[data-brand="wabi"] #pagefooter {
+[data-brand="wabi"] #pagefooter,
+[data-brand="wabi"] #pagefooter .section-footer,
+[data-brand="wabi"] #pagefooter .shopify-section-group-footer-group {
   background-color: var(--brand-wabi-footer-bg, #1a1a1a);
   color: var(--brand-wabi-footer-text, #f5f5f5);
 }
