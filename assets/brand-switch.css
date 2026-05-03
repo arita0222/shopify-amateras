@@ -51,19 +51,51 @@
   border-color: var(--brand-wabi-header-text, #f5f5f5);
 }
 
-/* --- ヘッダー色 --- */
-[data-brand="amateras"] .section-header {
+/* --- ヘッダー背景色（ブランド別） --- */
+[data-brand="amateras"] #pageheader {
   background-color: var(--brand-amateras-header-bg, #fff);
   color: var(--brand-amateras-header-text, #111);
+}
+[data-brand="wabi"] #pageheader {
+  background-color: var(--brand-wabi-header-bg, #1a1a1a);
+  color: var(--brand-wabi-header-text, #f5f5f5);
+}
+
+/* ナビ等のリンク色 */
+[data-brand="amateras"] .section-header {
   --color-header-link: var(--brand-amateras-header-text, #111);
   --color-link: var(--brand-amateras-header-text, #111);
 }
-
 [data-brand="wabi"] .section-header {
-  background-color: var(--brand-wabi-header-bg, #1a1a1a);
-  color: var(--brand-wabi-header-text, #f5f5f5);
   --color-header-link: var(--brand-wabi-header-text, #f5f5f5);
   --color-link: var(--brand-wabi-header-text, #f5f5f5);
+}
+
+/* FV上の透過解除（スクロール前もブランド色を維持） */
+[data-brand="amateras"] #pageheader.pageheader--transparent {
+  background-color: var(--brand-amateras-header-bg, #fff);
+  color: var(--brand-amateras-header-text, #111);
+}
+[data-brand="wabi"] #pageheader.pageheader--transparent {
+  background-color: var(--brand-wabi-header-bg, #1a1a1a);
+  color: var(--brand-wabi-header-text, #f5f5f5);
+}
+
+/* 透過用のグラデーションオーバーレイ無効化 */
+.section-header:has(.pageheader--transparent)::after {
+  display: none;
+}
+
+/* 透過時のテキスト色をブランド色で上書き */
+[data-brand="amateras"] .pageheader--transparent .logo-area,
+[data-brand="amateras"] .pageheader--transparent .logo a,
+[data-brand="amateras"] .pageheader--transparent .navigation__link {
+  color: var(--brand-amateras-header-text, #111);
+}
+[data-brand="wabi"] .pageheader--transparent .logo-area,
+[data-brand="wabi"] .pageheader--transparent .logo a,
+[data-brand="wabi"] .pageheader--transparent .navigation__link {
+  color: var(--brand-wabi-header-text, #f5f5f5);
 }
 
 /* --- フッター色 --- */
