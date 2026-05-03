@@ -152,3 +152,8 @@
 .mobile-navigation-drawer .brand-nav { display: none; }
 [data-brand="amateras"] .mobile-navigation-drawer .brand-nav--amateras { display: block; }
 [data-brand="wabi"]     .mobile-navigation-drawer .brand-nav--wabi     { display: block; }
+
+/* --- ヘッダー透過時の最初のセクションオフセット補正 --- */
+.section-header {
+  margin-bottom: 0 !important;
+}
