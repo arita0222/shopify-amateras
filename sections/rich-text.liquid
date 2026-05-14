@@ -1,5 +1,4 @@
-{%- assign brand_vis = section.settings.brand_visibility | default: 'all' -%}
-<div class="{% if section.settings.color_scheme != 'default' %}use-color-scheme use-color-scheme--{{ section.settings.color_scheme }} fully-padded-row--{{ section.settings.height }}{% else %}fully-spaced-row--{{ section.settings.height }}{% endif %}" data-brand-section="{{ brand_vis }}" {%- render 'animation-attrs', attrs: 'data-cc-animate' -%}>
+<div class="{% if section.settings.color_scheme != 'default' %}use-color-scheme use-color-scheme--{{ section.settings.color_scheme }} fully-padded-row--{{ section.settings.height }}{% else %}fully-spaced-row--{{ section.settings.height }}{% endif %}" {%- render 'animation-attrs', attrs: 'data-cc-animate' -%}>
   <div class="container{% unless section.settings.full_width %} container--reading-width{% endunless %}">
     <div class="align-ltr-{{ section.settings.text_alignment }} spaced-column">
       {% assign skip_block_count = 0 %}
@@ -149,21 +148,6 @@
           "label": "2"
         }
       ]
-    },
-    {
-      "type": "header",
-      "content": "ブランド表示"
-    },
-    {
-      "type": "select",
-      "id": "brand_visibility",
-      "label": "表示するブランド",
-      "options": [
-        { "value": "all", "label": "両方" },
-        { "value": "wabi", "label": "WABIのみ" },
-        { "value": "amateras", "label": "MAISONのみ" }
-      ],
-      "default": "all"
     }
   ],
   "blocks": [
