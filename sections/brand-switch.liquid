@@ -6,9 +6,11 @@
   assign logo_height    = section.settings.logo_height    | default: 24
   assign wabi_logo      = section.settings.wabi_logo
   assign amateras_logo  = section.settings.amateras_logo
-  assign wabi_logo_width     = section.settings.wabi_logo_width     | default: 80
-  assign amateras_logo_width = section.settings.amateras_logo_width | default: 80
-  assign bar_alignment_mobile = section.settings.bar_alignment_mobile | default: 'center'
+  assign wabi_logo_width_pc         = section.settings.wabi_logo_width_pc         | default: 80
+  assign wabi_logo_width_mobile     = section.settings.wabi_logo_width_mobile     | default: 60
+  assign amateras_logo_width_pc     = section.settings.amateras_logo_width_pc     | default: 80
+  assign amateras_logo_width_mobile = section.settings.amateras_logo_width_mobile | default: 60
+  assign bar_alignment_mobile       = section.settings.bar_alignment_mobile       | default: 'center'
 -%}
 
 {%- style -%}
@@ -24,8 +26,10 @@
     --brand-wabi-footer-bg:       {{ section.settings.wabi_footer_bg }};
     --brand-wabi-footer-text:     {{ section.settings.wabi_footer_text }};
     --brand-switch-logo-height:   {{ logo_height }}px;
-    --brand-switch-wabi-logo-width: {{ wabi_logo_width }}px;
-    --brand-switch-amateras-logo-width: {{ amateras_logo_width }}px;
+    --brand-switch-wabi-logo-width-pc: {{ wabi_logo_width_pc }}px;
+    --brand-switch-wabi-logo-width-mobile: {{ wabi_logo_width_mobile }}px;
+    --brand-switch-amateras-logo-width-pc: {{ amateras_logo_width_pc }}px;
+    --brand-switch-amateras-logo-width-mobile: {{ amateras_logo_width_mobile }}px;
   }
 {%- endstyle -%}
 
@@ -124,8 +128,8 @@
     },
     {
       "type": "range",
-      "id": "wabi_logo_width",
-      "label": "WABIロゴ幅",
+      "id": "wabi_logo_width_pc",
+      "label": "WABIロゴ幅(PC)",
       "min": 40,
       "max": 300,
       "step": 5,
@@ -134,13 +138,33 @@
     },
     {
       "type": "range",
-      "id": "amateras_logo_width",
-      "label": "MAISONロゴ幅",
+      "id": "wabi_logo_width_mobile",
+      "label": "WABIロゴ幅(モバイル)",
+      "min": 30,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "amateras_logo_width_pc",
+      "label": "MAISONロゴ幅(PC)",
       "min": 40,
       "max": 300,
       "step": 5,
       "unit": "px",
       "default": 80
+    },
+    {
+      "type": "range",
+      "id": "amateras_logo_width_mobile",
+      "label": "MAISONロゴ幅(モバイル)",
+      "min": 30,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 60
     },
     {
       "type": "range",

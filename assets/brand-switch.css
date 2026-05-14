@@ -28,12 +28,22 @@
   max-height: var(--brand-switch-logo-height, 80px);
   object-fit: contain;
 }
-/* ロゴ画像(ブランド別の幅) */
+/* ロゴ画像(ブランド別の幅 - PC既定) */
 .brand-switch-bar__btn--wabi .brand-switch-bar__logo {
-  width: var(--brand-switch-wabi-logo-width, 80px);
+  width: var(--brand-switch-wabi-logo-width-pc, 80px);
 }
 .brand-switch-bar__btn--amateras .brand-switch-bar__logo {
-  width: var(--brand-switch-amateras-logo-width, 80px);
+  width: var(--brand-switch-amateras-logo-width-pc, 80px);
+}
+
+/* ロゴ画像(モバイル時の幅上書き) */
+@media (max-width: 767px) {
+  .brand-switch-bar__btn--wabi .brand-switch-bar__logo {
+    width: var(--brand-switch-wabi-logo-width-mobile, 60px);
+  }
+  .brand-switch-bar__btn--amateras .brand-switch-bar__logo {
+    width: var(--brand-switch-amateras-logo-width-mobile, 60px);
+  }
 }
 .brand-switch-bar__text { line-height: 1; }
 
