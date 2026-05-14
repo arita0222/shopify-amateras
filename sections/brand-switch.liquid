@@ -6,6 +6,9 @@
   assign logo_height    = section.settings.logo_height    | default: 24
   assign wabi_logo      = section.settings.wabi_logo
   assign amateras_logo  = section.settings.amateras_logo
+  assign wabi_logo_width     = section.settings.wabi_logo_width     | default: 80
+  assign amateras_logo_width = section.settings.amateras_logo_width | default: 80
+  assign bar_alignment_mobile = section.settings.bar_alignment_mobile | default: 'center'
 -%}
 
 {%- style -%}
@@ -21,13 +24,16 @@
     --brand-wabi-footer-bg:       {{ section.settings.wabi_footer_bg }};
     --brand-wabi-footer-text:     {{ section.settings.wabi_footer_text }};
     --brand-switch-logo-height:   {{ logo_height }}px;
+    --brand-switch-wabi-logo-width: {{ wabi_logo_width }}px;
+    --brand-switch-amateras-logo-width: {{ amateras_logo_width }}px;
   }
 {%- endstyle -%}
 
 <div
   class="brand-switch-bar"
   id="brand-switch-bar"
-  data-alignment="{{ bar_alignment }}">
+  data-alignment="{{ bar_alignment }}"
+  data-alignment-mobile="{{ bar_alignment_mobile }}">
   <button
     class="brand-switch-bar__btn brand-switch-bar__btn--wabi"
     data-brand-btn="wabi"
@@ -90,6 +96,17 @@
       "default": "center"
     },
     {
+      "type": "select",
+      "id": "bar_alignment_mobile",
+      "label": "バーの位置(モバイル)",
+      "options": [
+        { "value": "left",   "label": "左" },
+        { "value": "center", "label": "中央" },
+        { "value": "right",  "label": "右" }
+      ],
+      "default": "center"
+    },
+    {
       "type": "header",
       "content": "ロゴ画像"
     },
@@ -107,8 +124,28 @@
     },
     {
       "type": "range",
+      "id": "wabi_logo_width",
+      "label": "WABIロゴ幅",
+      "min": 40,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "amateras_logo_width",
+      "label": "MAISONロゴ幅",
+      "min": 40,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
       "id": "logo_height",
-      "label": "ロゴ高さ",
+      "label": "ロゴ高さ(上限)",
       "min": 16,
       "max": 80,
       "step": 2,

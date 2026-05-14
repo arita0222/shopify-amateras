@@ -19,13 +19,21 @@
 .brand-switch-bar[data-alignment="center"] { justify-content: center; }
 .brand-switch-bar[data-alignment="right"]  { justify-content: flex-end; }
 
-/* ロゴ画像 */
+/* ロゴ画像(共通) */
 .brand-switch-bar__logo {
-  height: var(--brand-switch-logo-height, 24px);
+  height: auto;
   width: auto;
   display: block;
   max-width: 100%;
+  max-height: var(--brand-switch-logo-height, 80px);
   object-fit: contain;
+}
+/* ロゴ画像(ブランド別の幅) */
+.brand-switch-bar__btn--wabi .brand-switch-bar__logo {
+  width: var(--brand-switch-wabi-logo-width, 80px);
+}
+.brand-switch-bar__btn--amateras .brand-switch-bar__logo {
+  width: var(--brand-switch-amateras-logo-width, 80px);
 }
 .brand-switch-bar__text { line-height: 1; }
 
@@ -195,4 +203,11 @@
 [data-brand="wabi"] body,
 [data-brand="wabi"] {
   background-color: var(--brand-wabi-header-bg, #2e8b57);
+}
+
+/* --- モバイル時のバー位置上書き --- */
+@media (max-width: 767px) {
+  .brand-switch-bar[data-alignment-mobile="left"]   { justify-content: flex-start; }
+  .brand-switch-bar[data-alignment-mobile="center"] { justify-content: center; }
+  .brand-switch-bar[data-alignment-mobile="right"]  { justify-content: flex-end; }
 }
