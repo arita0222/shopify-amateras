@@ -35,7 +35,7 @@
           </div>
 
         {% when 'text' %}
-          <div class="section-footer__row__col section-footer__text-block {% if block.settings.text != blank %}section-footer__text-block--with-text{% endif %}" {{ block.shopify_attributes }}>
+          <div class="section-footer__row__col section-footer__text-block {% if block.settings.text != blank %}section-footer__text-block--with-text{% endif %}" data-brand-section="{{ block.settings.brand_visibility | default: 'all' }}" {{ block.shopify_attributes }}>
             {% if block.settings.title != blank %}
               <div class="section-footer__title heading-font h6">
                 {{- block.settings.title | escape -}}
@@ -394,6 +394,21 @@
           "id": "enable_follow_on_shop",
           "default": false,
           "label": "Enable Follow on Shop"
+        },
+        {
+          "type": "header",
+          "content": "ブランド表示"
+        },
+        {
+          "type": "select",
+          "id": "brand_visibility",
+          "label": "表示するブランド",
+          "options": [
+            { "value": "all", "label": "両方" },
+            { "value": "wabi", "label": "WABIのみ" },
+            { "value": "amateras", "label": "MAISONのみ" }
+          ],
+          "default": "all"
         }
       ]
     },
