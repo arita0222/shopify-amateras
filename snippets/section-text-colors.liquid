@@ -37,12 +37,19 @@
   #shopify-section-{{ section.id }} .h4,
   #shopify-section-{{ section.id }} .h5,
   #shopify-section-{{ section.id }} .h6,
+  #shopify-section-{{ section.id }} .has-paging__title,
   #shopify-section-{{ section.id }} .text-overlay__title,
-  #shopify-section-{{ section.id }} .has-paging__title { color: {{ sc_heading }} !important; }
+  #shopify-section-{{ section.id }} .text-overlay__title h2,
+  #shopify-section-{{ section.id }} .product-block__title,
+  #shopify-section-{{ section.id }} .product-block__title a,
+  #shopify-section-{{ section.id }} .product-link,
+  #shopify-section-{{ section.id }} .product-link:hover { color: {{ sc_heading }} !important; }
 {%- endif -%}
 {%- if sc_subheading != blank -%}
   #shopify-section-{{ section.id }} .subheading,
-  #shopify-section-{{ section.id }} .text-overlay__subtitle { color: {{ sc_subheading }} !important; }
+  #shopify-section-{{ section.id }} .text-overlay__subheading,
+  #shopify-section-{{ section.id }} .text-overlay__subtitle,
+  #shopify-section-{{ section.id }} .product-block__subtitle { color: {{ sc_subheading }} !important; }
 {%- endif -%}
 {%- if sc_text != blank -%}
   #shopify-section-{{ section.id }} p,
@@ -50,15 +57,17 @@
   #shopify-section-{{ section.id }} .rte p,
   #shopify-section-{{ section.id }} .rte li,
   #shopify-section-{{ section.id }} .text-overlay__text,
-  #shopify-section-{{ section.id }} .product-card__title,
-  #shopify-section-{{ section.id }} .product-card__price,
-  #shopify-section-{{ section.id }} .collection-card__title { color: {{ sc_text }} !important; }
+  #shopify-section-{{ section.id }} .product-price,
+  #shopify-section-{{ section.id }} .product-price__price,
+  #shopify-section-{{ section.id }} .price,
+  #shopify-section-{{ section.id }} .price-item { color: {{ sc_text }} !important; }
 {%- endif -%}
 {%- if sc_btn_bg != blank -%}
   #shopify-section-{{ section.id }} .btn,
   #shopify-section-{{ section.id }} .btn--primary,
   #shopify-section-{{ section.id }} .btn--secondary,
   #shopify-section-{{ section.id }} .button-row__btn,
+  #shopify-section-{{ section.id }} .text-overlay__button,
   #shopify-section-{{ section.id }} button.btn { background-color: {{ sc_btn_bg }} !important; border-color: {{ sc_btn_bg }} !important; }
 {%- endif -%}
 {%- if sc_btn_text != blank -%}
@@ -66,6 +75,8 @@
   #shopify-section-{{ section.id }} .btn--primary,
   #shopify-section-{{ section.id }} .btn--secondary,
   #shopify-section-{{ section.id }} .button-row__btn,
+  #shopify-section-{{ section.id }} .text-overlay__button,
+  #shopify-section-{{ section.id }} .small-feature-link,
   #shopify-section-{{ section.id }} button.btn { color: {{ sc_btn_text }} !important; }
 {%- endif -%}
 </style>
