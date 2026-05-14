@@ -1,5 +1,4 @@
-{%- assign brand_vis = section.settings.brand_visibility | default: 'all' -%}
-<div class="section-id-{{ section.id }} collection-slider-row for-collections {% if section.settings.color_scheme != 'default' %}use-color-scheme use-color-scheme--{{ section.settings.color_scheme }}{% endif %}" data-brand-section="{{ brand_vis }}">
+<div class="section-id-{{ section.id }} collection-slider-row for-collections {% if section.settings.color_scheme != 'default' %}use-color-scheme use-color-scheme--{{ section.settings.color_scheme }}{% endif %}">
   <div class="container{% if section.settings.enable_carousel %} container--not-mobile{% endif %}{% if section.settings.full_width %} container--no-max{% endif %}">
     {%- if section.settings.enable_carousel -%}
       <carousel-slider class="carousel block collection-slider">
@@ -352,21 +351,6 @@
           "value": "link"
         }
       ]
-    },
-    {
-      "type": "header",
-      "content": "ブランド表示"
-    },
-    {
-      "type": "select",
-      "id": "brand_visibility",
-      "label": "表示するブランド",
-      "options": [
-        { "value": "all", "label": "両方" },
-        { "value": "wabi", "label": "WABIのみ" },
-        { "value": "amateras", "label": "MAISONのみ" }
-      ],
-      "default": "all"
     }
   ],
   "blocks": [
