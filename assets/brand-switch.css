@@ -11,7 +11,36 @@
   z-index: 2;
   position: relative;
   transition: background-color 0.3s, color 0.3s;
+  padding: 0 16px;
 }
+
+/* バー位置（カスタマイザー連動） */
+.brand-switch-bar[data-alignment="left"]   { justify-content: flex-start; }
+.brand-switch-bar[data-alignment="center"] { justify-content: center; }
+.brand-switch-bar[data-alignment="right"]  { justify-content: flex-end; }
+
+/* ロゴ画像 */
+.brand-switch-bar__logo {
+  height: var(--brand-switch-logo-height, 24px);
+  width: auto;
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+}
+.brand-switch-bar__text { line-height: 1; }
+
+/* ロゴが入ったボタンは余白を少し詰める */
+.brand-switch-bar__btn:has(.brand-switch-bar__logo) {
+  padding: 6px 16px;
+}
+
+/* 非アクティブ側のロゴを少し薄く（選択がわかりやすいように） */
+[data-brand="wabi"] .brand-switch-bar__btn--amateras .brand-switch-bar__logo,
+[data-brand="amateras"] .brand-switch-bar__btn--wabi .brand-switch-bar__logo {
+  opacity: 0.45;
+  transition: opacity 0.2s;
+}
+.brand-switch-bar__btn:hover .brand-switch-bar__logo { opacity: 1; }
 
 /* バー背景色: ブランドごと */
 [data-brand="amateras"] .brand-switch-bar {

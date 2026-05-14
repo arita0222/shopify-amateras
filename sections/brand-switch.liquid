@@ -2,6 +2,10 @@
   assign amateras_label = section.settings.amateras_label | default: 'AMATERAS'
   assign wabi_label     = section.settings.wabi_label     | default: 'WABI'
   assign redirect_url   = section.settings.redirect_url   | default: '/'
+  assign bar_alignment  = section.settings.bar_alignment  | default: 'center'
+  assign logo_height    = section.settings.logo_height    | default: 24
+  assign wabi_logo      = section.settings.wabi_logo
+  assign amateras_logo  = section.settings.amateras_logo
 -%}
 
 {%- style -%}
@@ -16,25 +20,39 @@
     --brand-amateras-footer-text: {{ section.settings.amateras_footer_text }};
     --brand-wabi-footer-bg:       {{ section.settings.wabi_footer_bg }};
     --brand-wabi-footer-text:     {{ section.settings.wabi_footer_text }};
+    --brand-switch-logo-height:   {{ logo_height }}px;
   }
 {%- endstyle -%}
 
-<div class="brand-switch-bar" id="brand-switch-bar">
+<div
+  class="brand-switch-bar"
+  id="brand-switch-bar"
+  data-alignment="{{ bar_alignment }}">
   <button
     class="brand-switch-bar__btn brand-switch-bar__btn--wabi"
     data-brand-btn="wabi"
     data-brand-redirect="{{ redirect_url }}"
     aria-pressed="true"
+    aria-label="{{ wabi_label }}"
     type="button">
-    {{ wabi_label }}
+    {%- if wabi_logo != blank -%}
+      {{ wabi_logo | image_url: width: 400 | image_tag: alt: wabi_label, class: 'brand-switch-bar__logo', loading: 'eager' }}
+    {%- else -%}
+      <span class="brand-switch-bar__text">{{ wabi_label }}</span>
+    {%- endif -%}
   </button>
   <button
     class="brand-switch-bar__btn brand-switch-bar__btn--amateras"
     data-brand-btn="amateras"
     data-brand-redirect="{{ redirect_url }}"
     aria-pressed="false"
+    aria-label="{{ amateras_label }}"
     type="button">
-    {{ amateras_label }}
+    {%- if amateras_logo != blank -%}
+      {{ amateras_logo | image_url: width: 400 | image_tag: alt: amateras_label, class: 'brand-switch-bar__logo', loading: 'eager' }}
+    {%- else -%}
+      <span class="brand-switch-bar__text">{{ amateras_label }}</span>
+    {%- endif -%}
   </button>
 </div>
 
@@ -58,7 +76,48 @@
   "settings": [
     {
       "type": "header",
-      "content": "ブランド名"
+      "content": "表示設定"
+    },
+    {
+      "type": "select",
+      "id": "bar_alignment",
+      "label": "バーの位置",
+      "options": [
+        { "value": "left",   "label": "左" },
+        { "value": "center", "label": "中央" },
+        { "value": "right",  "label": "右" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "ロゴ画像"
+    },
+    {
+      "type": "image_picker",
+      "id": "wabi_logo",
+      "label": "WABIロゴ",
+      "info": "未設定の場合はWABIラベルのテキストを表示します"
+    },
+    {
+      "type": "image_picker",
+      "id": "amateras_logo",
+      "label": "MAISONロゴ",
+      "info": "未設定の場合はAMATERASラベルのテキストを表示します"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "ロゴ高さ",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "ブランド名(ロゴ未設定時のテキスト)"
     },
     {
       "type": "text",
