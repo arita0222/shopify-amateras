@@ -1,3 +1,4 @@
+{%- render 'section-text-colors' -%}
 {%- liquid
   if section.settings.enable_carousel
     assign product_limit = 20
@@ -203,6 +204,35 @@
       "type": "checkbox",
       "label": "Full page width",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "テキスト・ボタン色設定"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "見出し色"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "サブ見出し色"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "本文色"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "ボタン背景色"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "ボタンテキスト色"
     }
   ],
   "presets": [

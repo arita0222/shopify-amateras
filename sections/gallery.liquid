@@ -1,3 +1,4 @@
+{%- render 'section-text-colors' -%}
 {%- assign brand_vis = section.settings.brand_visibility | default: 'all' -%}
 {%- for block in section.blocks -%}
   {%- if block.settings.video_shopify != blank -%}
@@ -390,6 +391,35 @@
         { "value": "amateras", "label": "MAISONのみ" }
       ],
       "default": "all"
+    },
+    {
+      "type": "header",
+      "content": "テキスト・ボタン色設定"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "見出し色"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "サブ見出し色"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "本文色"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "ボタン背景色"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "ボタンテキスト色"
     }
   ],
   "blocks": [

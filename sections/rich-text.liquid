@@ -1,3 +1,4 @@
+{%- render 'section-text-colors' -%}
 {%- assign brand_vis = section.settings.brand_visibility | default: 'all' -%}
 <div class="{% if section.settings.color_scheme != 'default' %}use-color-scheme use-color-scheme--{{ section.settings.color_scheme }} fully-padded-row--{{ section.settings.height }}{% else %}fully-spaced-row--{{ section.settings.height }}{% endif %}" data-brand-section="{{ brand_vis }}" {%- render 'animation-attrs', attrs: 'data-cc-animate' -%}>
   <div class="container{% unless section.settings.full_width %} container--reading-width{% endunless %}">
@@ -164,6 +165,35 @@
         { "value": "amateras", "label": "MAISONのみ" }
       ],
       "default": "all"
+    },
+    {
+      "type": "header",
+      "content": "テキスト・ボタン色設定"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "見出し色"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "サブ見出し色"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "本文色"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "ボタン背景色"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "ボタンテキスト色"
     }
   ],
   "blocks": [

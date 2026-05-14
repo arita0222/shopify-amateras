@@ -1,0 +1,72 @@
+{%- liquid
+  assign sc_heading = section.settings.heading_color
+  assign sc_subheading = section.settings.subheading_color
+  assign sc_text = section.settings.text_color
+  assign sc_btn_bg = section.settings.button_bg_color
+  assign sc_btn_text = section.settings.button_text_color
+  assign has_any = false
+  if sc_heading != blank
+    assign has_any = true
+  endif
+  if sc_subheading != blank
+    assign has_any = true
+  endif
+  if sc_text != blank
+    assign has_any = true
+  endif
+  if sc_btn_bg != blank
+    assign has_any = true
+  endif
+  if sc_btn_text != blank
+    assign has_any = true
+  endif
+-%}
+{%- if has_any -%}
+<style>
+{%- if sc_heading != blank -%}
+  #shopify-section-{{ section.id }} h1,
+  #shopify-section-{{ section.id }} h2,
+  #shopify-section-{{ section.id }} h3,
+  #shopify-section-{{ section.id }} h4,
+  #shopify-section-{{ section.id }} h5,
+  #shopify-section-{{ section.id }} h6,
+  #shopify-section-{{ section.id }} .majortitle,
+  #shopify-section-{{ section.id }} .h1,
+  #shopify-section-{{ section.id }} .h2,
+  #shopify-section-{{ section.id }} .h3,
+  #shopify-section-{{ section.id }} .h4,
+  #shopify-section-{{ section.id }} .h5,
+  #shopify-section-{{ section.id }} .h6,
+  #shopify-section-{{ section.id }} .text-overlay__title,
+  #shopify-section-{{ section.id }} .has-paging__title { color: {{ sc_heading }} !important; }
+{%- endif -%}
+{%- if sc_subheading != blank -%}
+  #shopify-section-{{ section.id }} .subheading,
+  #shopify-section-{{ section.id }} .text-overlay__subtitle { color: {{ sc_subheading }} !important; }
+{%- endif -%}
+{%- if sc_text != blank -%}
+  #shopify-section-{{ section.id }} p,
+  #shopify-section-{{ section.id }} .rte,
+  #shopify-section-{{ section.id }} .rte p,
+  #shopify-section-{{ section.id }} .rte li,
+  #shopify-section-{{ section.id }} .text-overlay__text,
+  #shopify-section-{{ section.id }} .product-card__title,
+  #shopify-section-{{ section.id }} .product-card__price,
+  #shopify-section-{{ section.id }} .collection-card__title { color: {{ sc_text }} !important; }
+{%- endif -%}
+{%- if sc_btn_bg != blank -%}
+  #shopify-section-{{ section.id }} .btn,
+  #shopify-section-{{ section.id }} .btn--primary,
+  #shopify-section-{{ section.id }} .btn--secondary,
+  #shopify-section-{{ section.id }} .button-row__btn,
+  #shopify-section-{{ section.id }} button.btn { background-color: {{ sc_btn_bg }} !important; border-color: {{ sc_btn_bg }} !important; }
+{%- endif -%}
+{%- if sc_btn_text != blank -%}
+  #shopify-section-{{ section.id }} .btn,
+  #shopify-section-{{ section.id }} .btn--primary,
+  #shopify-section-{{ section.id }} .btn--secondary,
+  #shopify-section-{{ section.id }} .button-row__btn,
+  #shopify-section-{{ section.id }} button.btn { color: {{ sc_btn_text }} !important; }
+{%- endif -%}
+</style>
+{%- endif -%}

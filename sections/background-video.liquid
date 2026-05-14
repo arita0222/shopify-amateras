@@ -1,3 +1,4 @@
+{%- render 'section-text-colors' -%}
 {%- if section.settings.video_shopify != blank or section.settings.video_external != blank -%}
 {%- liquid
   assign using_video_tag = false
@@ -311,6 +312,35 @@
           "label": "No background"
         }
       ]
+    },
+    {
+      "type": "header",
+      "content": "テキスト・ボタン色設定"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "見出し色"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "サブ見出し色"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "本文色"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "ボタン背景色"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "ボタンテキスト色"
     }
   ],
   "blocks": [
