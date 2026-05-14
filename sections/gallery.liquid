@@ -1,3 +1,4 @@
+{%- assign brand_vis = section.settings.brand_visibility | default: 'all' -%}
 {%- for block in section.blocks -%}
   {%- if block.settings.video_shopify != blank -%}
     <link rel="stylesheet" href="{{ 'video.css' | asset_url }}" {%- render 'lazy-stylesheet-attrs' %}>
@@ -6,7 +7,7 @@
   {%- endif -%}
 {%- endfor -%}
 
-<div id="section-id-{{ section.id }}">
+<div id="section-id-{{ section.id }}" data-brand-section="{{ brand_vis }}">
   {% style %}
     {%- if section.settings.height == 'fixed' -%}
       #section-id-{{ section.id }} .gallery__item {
@@ -374,6 +375,21 @@
           "value": "link"
         }
       ]
+    },
+    {
+      "type": "header",
+      "content": "ブランド表示"
+    },
+    {
+      "type": "select",
+      "id": "brand_visibility",
+      "label": "表示するブランド",
+      "options": [
+        { "value": "all", "label": "両方" },
+        { "value": "wabi", "label": "WABIのみ" },
+        { "value": "amateras", "label": "MAISONのみ" }
+      ],
+      "default": "all"
     }
   ],
   "blocks": [
